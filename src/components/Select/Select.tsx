@@ -47,32 +47,32 @@ export function Select(props: SelectPropsType) {
             }
         }
 
-        if(e.key === "Enter" || e.key === "Escape") {
+        if (e.key === "Enter" || e.key === "Escape") {
             setActive(false);
         }
     }
 
-        return (
-            <>
-                <div className={styles.select} onKeyUp={onKeyUp} tabIndex={0}>
+    return (
+        <>
+            <div className={styles.select} onKeyUp={onKeyUp} tabIndex={0}>
                 <span className={styles.main} onClick={toggleItems}>
                     {selectedItem && selectedItem.title}</span>
-                    {
-                        active &&
-                        <div className={styles.items}>
-                            {props.items.map(i => <div
-                                onMouseEnter={() => {
-                                    setHoveredElementValue(i.value)
-                                }}
-                                className={styles.item + " " + (hoveredItem === i ? styles.selected : "")}
-                                key={i.value}
-                                onClick={() => {
-                                    onItemClick(i.value)
-                                }}
-                            >{i.title}</div>)}
-                        </div>
-                    }
-                </div>
-            </>
-        )
-    }
+                {
+                    active &&
+                    <div className={styles.items}>
+                        {props.items.map(i => <div
+                            onMouseEnter={() => {
+                                setHoveredElementValue(i.value)
+                            }}
+                            className={styles.item + " " + (hoveredItem === i ? styles.selected : "")}
+                            key={i.value}
+                            onClick={() => {
+                                onItemClick(i.value)
+                            }}
+                        >{i.title}</div>)}
+                    </div>
+                }
+            </div>
+        </>
+    )
+}
